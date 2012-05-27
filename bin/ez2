@@ -12,6 +12,7 @@ _nailgun_pid="$1"
 if [[ "${_nailgun_pid}" == "nil" ]]
 then
   java -server -jar ${_brew_prefix}/Library/LinkedKegs/nailgun/nailgun-[0-9\.]*\.jar 127.0.0.1 1> /dev/null &
+  trap 'ng ng-stop' EXIT
   sleep 1
   ng ng-cp ${_brew_prefix}/Library/LinkedKegs/ec2-api-tools/jars/lib/*.jar
 fi
@@ -19,8 +20,3 @@ fi
 export REPL_PROMPT="${_brew_name}>> "
 export REPL_COMPLETION_DIR="${_brew_prefix}/share/${_brew_name}/repl"
 repl "${_brew_prefix}/Library/LinkedKegs/${_brew_name}/libexec/${_brew_name}.sh"
-
-if [[ "${_nailgun_pid}" == "nil" ]]
-then
-  ng ng-stop
-fi

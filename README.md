@@ -27,8 +27,11 @@ The ec2-api-tools are great but I've always wished they were faster. I made a wr
     REGION  us-west-2   ec2.us-west-2.amazonaws.com
     REGION  us-west-1   ec2.us-west-1.amazonaws.com
     REGION  ap-southeast-1  ec2.ap-southeast-1.amazonaws.com
+    ez2>> describe-availability-zones
+    AVAILABILITYZONE    us-west-2a  available   us-west-2
+    AVAILABILITYZONE    us-west-2b  available   us-west-2
+    AVAILABILITYZONE    us-west-2c  available   us-west-2
     ez2>> ^D
-    
-    $ 
 
+    $
 

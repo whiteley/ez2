@@ -1,4 +1,4 @@
-### The ec2-api-tools are great but I've always wished they were faster. I made a wrapper to speed things up with [Repl](https://github.com/defunkt/repl) and [Nailgun](http://www.martiansoftware.com/nailgun/). You can install everything (including the ec2-api-tools themselves) with [Homebrew](http://mxcl.github.com/homebrew/) after enabling my tap.
+The ec2-api-tools are great but I've always wished they were faster. I made a wrapper to speed things up with [Repl](https://github.com/defunkt/repl) and [Nailgun](http://www.martiansoftware.com/nailgun/). You can install everything (including the ec2-api-tools themselves) with [Homebrew](http://mxcl.github.com/homebrew/) after enabling my tap.
 
     $ brew tap whiteley/tap
     Cloning into '/usr/local/Library/Taps/whiteley-tap'...

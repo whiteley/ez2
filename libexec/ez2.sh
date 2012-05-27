@@ -13,7 +13,13 @@ ec2_apitools_bin="${_brew_prefix}/bin"
 if [ -h "${ec2_apitools_bin}/${_cmd}" ]
 then
   set $(grep ec2-cmd "${ec2_apitools_bin}/${_cmd}")
-  cmd="$2"
+elif [ -h "${ec2_apitools_bin}/ec2-${_cmd}" ]
+then
+  set $(grep ec2-cmd "${ec2_apitools_bin}/ec2-${_cmd}")
+else
+  echo 'Unknown command'
+  exit
 fi
 
+cmd="$2"
 ng com.amazon.aes.webservices.client.cmd.${cmd} ${opts}

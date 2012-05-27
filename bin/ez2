@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+
+set $(ps ax -o pid= -o command= | grep [n]ailgun || echo nil)
+
+_brew_name=ez2
+_brew_prefix=$(brew --prefix)
+_nailgun_pid="$1"
+
+if [[ "${_nailgun_pid}" == "nil" ]]
+then
+  java -server -jar ${_brew_prefix}/Library/LinkedKegs/nailgun/nailgun-[0-9\.]*\.jar 127.0.0.1 1> /dev/null &
+  sleep 1
+  ng ng-cp ${_brew_prefix}/Library/LinkedKegs/ec2-api-tools/jars/lib/*.jar
+fi
+
+export REPL_PROMPT="${_brew_name}>> "
+export REPL_COMPLETION_DIR="${_brew_prefix}/share/${_brew_name}/repl"
+repl "${_brew_prefix}/Library/LinkedKegs/${_brew_name}/libexec/${_brew_name}.sh"
+
+if [[ "${_nailgun_pid}" == "nil" ]]
+then
+  ng ng-stop
+fi
